@@ -24,7 +24,6 @@
 			camera.position.set(12,14,28);
 			camera.lookAt(new THREE.Vector3(0,0,0));
 
-			
 			// големият куб, от който са се изрежат парчета
 			var material = new THREE.MeshPhongMaterial();
 
@@ -51,7 +50,7 @@
 					}
 				}
 			}
-						
+
 			var light = new THREE.PointLight( );
 			light.position.set(17,14,11);
 			scene.add( light );
@@ -66,6 +65,15 @@
 				requestAnimationFrame( drawFrame );
 				scene.rotation.x += 0.015;
 				scene.rotation.y += 0.015;
+				console.log(scene)
+				let outBoxes = scene.children;
+				outBoxes = outBoxes.slice(3, 3+8);
+				outBoxes.forEach((element) => {
+					element.rotation.x += 0.05;
+					element.rotation.y += 0.05;	
+					element.rotation.z += 0.05;	
+				});
+
 				renderer.render( scene, camera );
 			}
 			
