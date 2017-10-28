@@ -27,7 +27,7 @@
 			
 			// цикъл за създаване на кубчетата
 			var geometry = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
-			var material = new THREE.MeshPhongMaterial();
+			var material = new THREE.MeshPhongMaterial({color: 'red'});
 			// засега едно кубче, колкото да има нещо
 			var cube = new THREE.Mesh( geometry, material );
 
