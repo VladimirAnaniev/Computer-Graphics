@@ -48,20 +48,14 @@
 				var geometry = new THREE.TextGeometry( '嵐', {
 					font: font,
 					size: 15,
-					height: 5,
-					curveSegments: 0,
-					bevelEnabled: false,
-					bevelThickness: 0,
-					bevelSize: 0,
-					bevelSegments: 0
-				} 
-			);
+					height: 5
+				});
 
-	var text = new THREE.Mesh( geometry, material );
-	text.position.set(-10.5, -7, 0)
+				var text = new THREE.Mesh( geometry, material );
+				text.position.set(-10.5, -7, 0)
 
-	part2.add(text)
-} );
+				part2.add(text)
+			});
 
 			// Файлът kanji.js се грижи да нарисува земята и двете половини
 			// на йероглифа; грижи се и раздалечаването и приближаването на
