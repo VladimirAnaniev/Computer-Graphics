@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>	
+<html>
+	<head>
+		<script src="three.min.js"></script>
+		<script src="kanji.js"></script>
+		<script src="ThreeCSG.js"></script>
+	</head>
+	
+	<body onload="main()">
+		<h1>ф.н. 81459 &ndash; група 2 &ndash; Владимир Ананиев</h1>
+
+		<script>
+			var loader = new THREE.FontLoader()
+			loader.load('fonts/JK Gothic M_Medium.json', function (font) {
+				var kanjiGeom = new THREE.TextGeometry( '嵐', {
+					font: font,
+					size: 15,
+					height: 10
+				})
+				kanjiGeom.translate(-10.5, -7, -5)
+				var kanji = new ThreeBSP(kanjiGeom)				
+
+				var dividerGeom = new THREE.BoxGeometry(Math.sqrt(2) * 20, Math.sqrt(2) * 20, 11)	
+				dividerGeom.rotateZ(Math.PI / 4)
+				dividerGeom.translate(10, 10, 0)
+				var divider= new ThreeBSP(dividerGeom);
+
+				var material = new THREE.MeshPhongMaterial({color:'gray',shininess:100})
+				
+				var right = kanji.intersect(dividerCSG).toMesh(material) 
+				part1.add(right)
+
+				var left = kanji.subtract(dividerCSG).toMesh(material)
+				part2.add(left)
+			})
+		</script>
+	</body>
+</html>
