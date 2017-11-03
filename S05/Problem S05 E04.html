@@ -23,12 +23,34 @@
 			camera.lookAt(new THREE.Vector3(0,0,0));
 
 			// За момента имаме само окръжност
-			var circle = new THREE.Mesh(
-				new THREE.CylinderGeometry(20,20,1/2,80),
-				new THREE.MeshPhongMaterial()
-			);
-			scene.add( circle );
+			// var circle = new THREE.Mesh(
+			// 	new THREE.CylinderGeometry(20,20,1/2,80),
+			// 	new THREE.MeshPhongMaterial()
+			// );
+			// scene.add( circle );
 			
+			let material = new THREE.MeshPhongMaterial()
+			
+			let cone1 = new THREE.ConeGeometry(10, 20)
+			cone1.translate(0, -10, 0)
+			cone1 = new ThreeBSP(cone1)
+
+			let cone2 = new THREE.ConeGeometry(10, 20)
+			cone2.rotateX(Math.PI)
+			cone2.translate(1, 10, 0)
+			cone2 = new ThreeBSP(cone2)
+
+			let cones = cone1.union(cone2)
+
+			let plane = new THREE.PlaneGeometry(40, 40)
+			plane.translate(0, 0, -2)
+			plane = new ThreeBSP(plane)
+
+			let result = cones.intersect(plane)
+			result = result.toMesh(material)
+
+			scene.add(result)
+
 			// Добавяме светлина
 			light = new THREE.PointLight('lightblue');
 			light.position.set(0,0,100);
@@ -38,10 +60,10 @@
 			{
 				requestAnimationFrame( drawFrame );
 				
-				// въртим окръжността
-				circle.rotation.x += 0.015;
-				circle.rotation.y += 0.010;
-				circle.rotation.z += 0.005;
+				// // въртим окръжността
+				result.rotation.x += 0.015;
+				result.rotation.y += 0.010;
+				result.rotation.z += 0.005;
 				
 				renderer.render( scene, camera );
 			}
