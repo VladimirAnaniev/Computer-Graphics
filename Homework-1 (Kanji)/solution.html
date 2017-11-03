@@ -27,10 +27,10 @@
 
 				var material = new THREE.MeshPhongMaterial({color:'gray',shininess:100})
 				
-				var right = kanji.intersect(dividerCSG).toMesh(material) 
+				var right = kanji.intersect(divider).toMesh(material) 
 				part1.add(right)
 
-				var left = kanji.subtract(dividerCSG).toMesh(material)
+				var left = kanji.subtract(divider).toMesh(material)
 				part2.add(left)
 			})
 		</script>
