@@ -29,10 +29,18 @@
 			
 			// Основно тяло на зарчето - куб 4х4х4, който ще
 			// трябва да решите как да продупчите
-			var die = new THREE.Mesh(
-				new THREE.BoxGeometry( 4, 4, 4 ),
-				new THREE.MeshLambertMaterial()
-			);
+			var material = new THREE.MeshLambertMaterial()
+			var die = new THREE.BoxGeometry( 4, 4, 4 )
+			die = new ThreeBSP(die)
+
+			let inner = new THREE.BoxGeometry(3.9, 3.9, 3.9)
+			inner = new ThreeBSP(inner)
+			die = die.subtract(inner)
+
+			//TODO
+			
+
+			die = die.toMesh(material)
 			die.castShadow = true;
 			scene.add( die );
 			
