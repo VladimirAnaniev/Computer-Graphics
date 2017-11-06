@@ -1,90 +1,76 @@
-function drawCrown (material) {
-  var crown = new THREE.Object3D()
+function drawCrown () {
+  var crown = []
 
   var topHorizontal = new THREE.BoxGeometry(15, 1.5, 8)
   topHorizontal.translate(0, 6, 0)
-  var topHorizontalMesh = new THREE.Mesh(topHorizontal, material)
-  crown.add(topHorizontalMesh)
+  crown.push(topHorizontal)
 
   var leftTop = new THREE.BoxGeometry(1.5, 3, 8)
   leftTop.translate(-6.75, 7, 0)
-  var leftTopMesh = new THREE.Mesh(leftTop, material)
-  crown.add(leftTopMesh)
+  crown.push(leftTop)
 
   var rightTop = leftTop.clone()
   rightTop.translate(13.5, 0, 0)
-  var rightTopMesh = new THREE.Mesh(rightTop, material)
-  crown.add(rightTopMesh)
+  crown.push(rightTop)
 
   var middleTop = new THREE.BoxGeometry(1.5, 4, 8)
   middleTop.translate(0, 7.5, 0)
-  var middleTopMesh = new THREE.Mesh(middleTop, material)
-  crown.add(middleTopMesh)
+  crown.push(middleTop)
 
   return crown
 }
 
-function drawMustache (material) {
-  var mustache = new THREE.Object3D()
+function drawMustache () {
+  var mustache = []
 
   var topHorizontal = new THREE.BoxGeometry(14, 1.5, 8)
   topHorizontal.translate(-0.2, 3.5, 0)
-  var topHorizontalMesh = new THREE.Mesh(topHorizontal, material)
-  mustache.add(topHorizontalMesh)
+  mustache.push(topHorizontal)
 
   var leftVertical = new THREE.BoxGeometry(1.5, 7, 8)
   leftVertical.translate(-6.45, -0.5, 0)
-  var leftVerticalMesh = new THREE.Mesh(leftVertical, material)
-  mustache.add(leftVerticalMesh)
+  mustache.push(leftVertical)
   // TODO: Curve
 
   var rightVertical = new THREE.BoxGeometry(1.5, 7, 8)
   rightVertical.translate(6.05, -0.5, 0)
-  var rightVerticalMesh = new THREE.Mesh(rightVertical, material)
-  mustache.add(rightVerticalMesh)
+  mustache.push(rightVertical)
   // TODO: Curve
 
   return mustache
 }
 
-function drawCenter (material) {
-  var center = new THREE.Object3D()
+function drawCenter () {
+  var center = []
 
   var verticalLine = new THREE.BoxGeometry(1.5, 8, 8)
   verticalLine.translate(0, -3.5, 0)
-  var verticalLineMesh = new THREE.Mesh(verticalLine, material)
-  center.add(verticalLineMesh)
+  center.push(verticalLine)
 
   var horizontalTopLine = new THREE.BoxGeometry(9, 1.5, 8)
   horizontalTopLine.translate(0, -2, 0)
-  var horizontalTopLineMesh = new THREE.Mesh(horizontalTopLine, material)
-  center.add(horizontalTopLineMesh)
+  center.push(horizontalTopLine)
 
   var horizontalBottomLine = horizontalTopLine.clone()
   horizontalBottomLine.translate(0, -3, 0)
-  var horizontalBottomLineMesh = new THREE.Mesh(horizontalBottomLine, material)
-  center.add(horizontalBottomLineMesh)
+  center.push(horizontalBottomLine)
 
   var smallVerticalLeft = new THREE.BoxGeometry(1.5, 1.5, 8)
   smallVerticalLeft.translate(-3.75, -3.5, 0)
-  var smallVerticalLeftMesh = new THREE.Mesh(smallVerticalLeft, material)
-  center.add(smallVerticalLeftMesh)
+  center.push(smallVerticalLeft)
 
   var smallVerticalRight = smallVerticalLeft.clone()
   smallVerticalRight.translate(7.5, 0, 0)
-  var smallVerticalRightMesh = new THREE.Mesh(smallVerticalRight, material)
-  center.add(smallVerticalRightMesh)
+  center.push(smallVerticalRight)
 
   var topRotated = new THREE.BoxGeometry(10, 1.5, 8) // TODO: Curve
   topRotated.rotateZ(Math.PI / 20)
   topRotated.translate(0, 1, 0)
-  var topRotatedMesh = new THREE.Mesh(topRotated, material)
-  center.add(topRotatedMesh)
+  center.push(topRotated)
 
   var bottomRotated = topRotated.clone()
   bottomRotated.translate(0, -9, 0)
-  var bottomRotatedMesh = new THREE.Mesh(bottomRotated, material)
-  center.add(bottomRotatedMesh)
+  center.push(bottomRotated)
 
   return center
 }

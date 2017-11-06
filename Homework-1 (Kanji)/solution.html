@@ -34,15 +34,27 @@
 			// 	// // part1.add(right)
 			// 	// // part2.add(left)
 			// })
+			
+			var dividerGeom = new THREE.BoxGeometry(Math.sqrt(2) * 20, Math.sqrt(2) * 20, 11)	
+			dividerGeom.rotateZ(Math.PI / 4)
+			dividerGeom.translate(10, 10, 0)
+			var divider= new ThreeBSP(dividerGeom);
 
 			var material = new THREE.MeshPhongMaterial({color:'gray',shininess:100})
 			
-							var generatedKanji = new THREE.Object3D()
-							
-							generatedKanji.add(drawCrown(material))
-							generatedKanji.add(drawMustache(material))
-							generatedKanji.add(drawCenter(material))
-							part1.add(generatedKanji)
+			drawCrown().forEach(splitAndAddToScene)
+			drawMustache().forEach(splitAndAddToScene)
+			drawCenter().forEach(splitAndAddToScene)
+
+			function splitAndAddToScene(el) {
+				var element = new ThreeBSP(el)
+
+				var right = element.intersect(divider).toMesh(material)
+				part1.add(right)
+
+				var left = element.subtract(divider).toMesh(material)
+				part2.add(left)
+			}
 		</script>
 	</body>
 </html>
