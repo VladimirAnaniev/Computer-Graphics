@@ -6,7 +6,7 @@
 		</style>
 	</head>
 	<body>
-		<script src="three.min.js"></script>
+		<script src="../three.min.js"></script>
 		<script>
 			// Задача: изградете къща чрез плъзгане на профил
 
@@ -26,8 +26,12 @@
 			// профил (равнобедренотриъгълен)
 			var shape = new THREE.Shape();
 			shape.moveTo(  0,  2 );
-			shape.lineTo(  2, -2 );
-			shape.lineTo( -2, -2 );
+			shape.lineTo(  -2, 1 );
+			shape.lineTo( -1.5, 1 );
+			shape.lineTo(  -1.5,  -1 );
+			shape.lineTo(  1.5,  -1 );
+			shape.lineTo(  1.5,  1 );
+			shape.lineTo(  2,  1 );
 			shape.lineTo(  0,  2 );
 
 			// създаване на формата на къщата чрез плъзгане
