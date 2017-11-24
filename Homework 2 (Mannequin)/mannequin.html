@@ -1,0 +1,84 @@
+﻿﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="three.min.js"></script>
+		<script src="human.js"></script>
+	</head>
+	
+	<body>
+		<h1>"Здрависване"<br><small>ф.н. 81459 &ndash; група 2 &ndash; Владимир Ананиев</small></h1>
+
+		<script>
+			// нагласяване на цвета и центрирането на текста с имената ви
+			document.getElementsByTagName('h1')[0].style = 'color:white; text-align:center; font-size:1.75em';
+			
+			// рисувателно поле на цял екран
+			renderer = new THREE.WebGLRenderer({antialias:true});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			renderer.domElement.style = 'width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1;';
+			
+			// сцена и камера
+			scene = new THREE.Scene();
+			camera = new THREE.PerspectiveCamera( 30, window.innerWidth/window.innerHeight, 0.1, 2000 );
+			camera.position.set(0, 5,150);
+
+			// светлини
+			var light = new THREE.DirectionalLight('lightblue',0.8);
+			light.position.set(0,1,4);
+			scene.add(light);
+			scene.add( new THREE.AmbientLight('white',0.4) );
+			
+			// функция за анимиране на сцената
+			var t = 0; // време
+			function drawFrame()
+			{
+				requestAnimationFrame( drawFrame );
+				if (animate) animate(t++);
+				renderer.render( scene, camera );
+			}			
+			
+			// човечета
+			man1 = мъжествен();
+			man1.position.x -= 14
+			man1.д_ръка.врът(0, -20, -25)
+			man1.д_лакът.врът(20, 0, -50)
+
+			man2 = женствен();
+			man2.position.x += 14
+			man2.rotateY(Math.PI)
+			man2.д_ръка.врът(0, -20, -25)
+			man2.д_лакът.врът(20, 0, -50)
+
+			var men = [man1, man2]			
+			// тук се описват статичните елементи на позата
+
+
+			// анимация на човечетата
+			animate = function (t)
+			{
+				// тук се описват динамичните елементи на позата
+				// като променливата t е номер на кадър, като се
+				// очаква 1 секунда да е приблизително 60 кадъра
+				men.forEach((man) => {
+					// Здрависване
+					man.д_ръка.врът(0 ,-20, -sin(3 * t) - 25)
+					man.д_лакът.врът(20, 0, 10*sin(3 * t) - 50)
+
+					// Да не стоят като пънове
+					man.тяло.врът(0, sin(3*t), 0)
+
+					man.л_ръка.врът(0,0, 3*sin(3*t))
+					man.л_лакът.врът(0,0,5*sin(3*t) - 10)
+				})
+
+				// Кимане с глава
+				man1.врат.врът(0,0,5*sin(3*(t + 5))-5);
+				man1.глава.врът(0,0,5*sin(3*(t + 5))-5);
+			}
+
+			drawFrame();
+		</script>
+	</body>
+</html>
